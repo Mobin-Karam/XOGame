@@ -4,12 +4,13 @@ body {
 }
 
 .container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url("./assets/img/cool-background.png");
+  background-image: url("/assets/img/cool-background.png");
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   display: flex;
@@ -26,10 +27,48 @@ body {
 }
 .container .buttons .reset {
   font-size: 32px;
-  padding: 0px 30px;
+  padding: 0px 20px;
+  border: 0;
+  background-color: #4aaaf7;
+  color: #fff;
+  border-radius: 10px;
   cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: background-color 0.2s ease-in;
+  -webkit-transition: background-color 0.2s ease-in;
+  -moz-transition: background-color 0.2s ease-in;
+  -ms-transition: background-color 0.2s ease-in;
+  -o-transition: background-color 0.2s ease-in;
+}
+.container .buttons .reset:hover {
+  background-color: #4996d4;
+}
+.container .buttons .start {
+  font-size: 32px;
+  padding: 0px 20px;
+  border: 0;
+  background-color: #057217;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: background-color 0.1s ease-in-out;
+  -webkit-transition: background-color 0.1s ease-in-out;
+  -moz-transition: background-color 0.1s ease-in-out;
+  -ms-transition: background-color 0.1s ease-in-out;
+  -o-transition: background-color 0.1s ease-in-out;
+}
+.container .buttons .start:hover {
+  background-color: #069c1f;
 }
 .container .board {
+  position: relative;
   width: 300px;
   height: 300px;
   display: flex;
@@ -38,6 +77,18 @@ body {
   flex-flow: column nowrap;
   background-color: #707070;
   text-align: center;
+}
+.container .board .after {
+  visibility: visible;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-color: hsla(0, 1%, 28%, 0.76);
 }
 .container .board__row {
   width: 100%;
@@ -57,7 +108,7 @@ body {
   font-size: 42px;
   text-align: center;
   border: 2px solid #fff;
-  background-color: #d2d2d2;
+  background-color: #b4e3e9;
   cursor: pointer;
   transition: background-color 0.2s ease;
   -webkit-transition: background-color 0.2s ease;
@@ -67,6 +118,10 @@ body {
 }
 .container .board__row__box:hover {
   background-color: #c1c0c0;
+}
+
+.vis-hidden {
+  visibility: hidden !important;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const fakeBox = document.querySelectorAll(".board__row__box");
   const header = document.querySelector(".header");
   const reset = document.querySelector(".reset");
+  const start = document.querySelector(".start");
+  const after = document.querySelector(".after");
 
   // Make Array
   const box = [];
@@ -166,6 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
       box.classList.remove("disabled");
     });
     header.textContent = `Turn : Player O`;
+    after.classList.remove("vis-hidden");
+  });
+
+  // Start Button
+  start.addEventListener("click", () => {
+    after.classList.add("vis-hidden");
   });
 
   // End
