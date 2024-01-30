@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     box.forEach((box) => {
       box.classList.remove("disabled");
     });
-    header.textContent = `Turn : O`;
+    header.textContent = `Turn : Player O`;
   });
   console.log(box);
   // End
