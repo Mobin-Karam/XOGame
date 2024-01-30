@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check for Winner
         if (checkWinner(initialValue[turn]) === "win") {
-          header.textContent = `Winner  is ${initialValue[turn]} 🎉 `;
+          header.textContent = `Winner  is Player ${initialValue[turn]} 🎉 `;
           playerOPoint++;
           box.forEach((box) => {
             box.classList.add("disabled");
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
           box.forEach((box) => {
             box.classList.add("disabled");
           });
-        } else header.textContent = `Turn : X`;
+        } else header.textContent = `Turn : Player X`;
 
         console.log(checkWinner(initialValue[turn]));
 
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check for Winner
         if (checkWinner(initialValue[turn]) === "win") {
-          header.textContent = `Winner  is ${initialValue[turn]} 🎉 `;
+          header.textContent = `Winner  is Player ${initialValue[turn]} 🎉 `;
           playerXPoint++;
           box.forEach((box) => {
             box.classList.add("disabled");
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
           box.forEach((box) => {
             box.classList.add("disabled");
           });
-        } else header.textContent = `Turn : O`;
+        } else header.textContent = `Turn : Player O`;
 
         console.log(checkWinner(initialValue[turn]));
 
