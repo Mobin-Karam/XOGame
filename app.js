@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Turn Number
   let turn = 0;
-  header.textContent = `Turn : O`;
+  header.textContent = `Turn : Player O`;
 
   // Players Points
   let playerXPoint = 0;
