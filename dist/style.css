@@ -9,6 +9,9 @@
   flex-flow: column nowrap;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.container .disabled {
+  pointer-events: none;
+}
 .container .buttons {
   margin-bottom: 16px;
 }
