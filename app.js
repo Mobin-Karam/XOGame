@@ -1,54 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const box = document.querySelectorAll(".board__row__box");
+  const fakeBox = document.querySelectorAll(".board__row__box");
   const header = document.querySelector(".header");
+  const reset = document.querySelector(".reset");
+
+  const box = [];
+  for (let i = 0; i < fakeBox.length; i++) {
+    box.push(fakeBox[i]);
+  }
 
   // Initial Value for every Player
   let initialValue = ["O", "X"];
 
-  // Possible state of winner
-  //   const winnerStates = [
-  //     [1, 2, 3],
-  //     [4, 5, 6],
-  //     [7, 8, 9],
-  //     [1, 4, 7],
-  //     [2, 5, 8],
-  //     [3, 6, 9],
-  //     [1, 5, 9],
-  //     [3, 5, 7],
-  //   ];
   // Turn Number
   let turn = 0;
   header.textContent = `Turn : O`;
 
-  // Game Play
-  for (let i = 0; i < box.length; i++) {
-    box[i].addEventListener("click", () => {
-      // O player
-      if (!turn) {
-        box[i].textContent = initialValue[turn];
-        if (checkWinner("O")) {
-          header.textContent = `Winner  is ${initialValue[turn]}`;
-          box.forEach((box) => {
-            box.classList.add("disabled");
-          });
-        } else header.textContent = `Turn : X`;
-        box[i].classList.add("disabled");
-        turn = 1;
-        // X player
-      } else {
-        box[i].textContent = initialValue[turn];
-        if (checkWinner("X")) {
-          header.textContent = `Winner  is ${initialValue[turn]}`;
-          box.forEach((box) => {
-            box.classList.add("disabled");
-          });
-        } else header.textContent = `Turn : O`;
-        turn = 0;
-      }
-    });
-  }
+  // Players Points
+  let playerXPoint = 0;
+  let playerOPoint = 0;
 
-  // Win Check Function
+  // Check Winner
   function checkWinner(value) {
     // Win
     if (
@@ -56,61 +27,141 @@ document.addEventListener("DOMContentLoaded", () => {
       box[1].textContent === value &&
       box[2].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[3].textContent === value &&
       box[4].textContent === value &&
       box[5].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[6].textContent === value &&
       box[7].textContent === value &&
       box[8].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[0].textContent === value &&
       box[3].textContent === value &&
       box[6].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[1].textContent === value &&
       box[4].textContent === value &&
       box[7].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[2].textContent === value &&
       box[5].textContent === value &&
       box[8].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[0].textContent === value &&
       box[4].textContent === value &&
       box[8].textContent === value
     ) {
-      return true;
+      return "win";
     }
     if (
       box[2].textContent === value &&
       box[4].textContent === value &&
       box[6].textContent === value
     ) {
-      return true;
+      return "win";
     }
+
+    // Tie
+    if (
+      box[0].textContent !== "" &&
+      box[1].textContent !== "" &&
+      box[2].textContent !== "" &&
+      box[3].textContent !== "" &&
+      box[4].textContent !== "" &&
+      box[5].textContent !== "" &&
+      box[6].textContent !== "" &&
+      box[7].textContent !== "" &&
+      box[8].textContent !== ""
+    )
+      return "tie";
 
     // Lose
     return false;
   }
 
+  // Game Play
+  for (let i = 0; i < box.length; i++) {
+    box[i].addEventListener("click", () => {
+      // O player
+      if (!turn) {
+        box[i].textContent = initialValue[turn];
+
+        // Check for Winner
+        if (checkWinner(initialValue[turn]) === "win") {
+          header.textContent = `Winner  is ${initialValue[turn]} 🎉 `;
+          playerOPoint++;
+          box.forEach((box) => {
+            box.classList.add("disabled");
+          });
+        } else if (checkWinner(initialValue[turn]) === "tie") {
+          header.textContent = `It's a Tie Oops! 😐 `;
+          playerOPoint++;
+          box.forEach((box) => {
+            box.classList.add("disabled");
+          });
+        } else header.textContent = `Turn : X`;
+
+        console.log(checkWinner(initialValue[turn]));
+
+        box[i].classList.add("disabled");
+        turn = 1;
+
+        // X player
+      } else {
+        box[i].textContent = initialValue[turn];
+
+        // Check for Winner
+        if (checkWinner(initialValue[turn]) === "win") {
+          header.textContent = `Winner  is ${initialValue[turn]} 🎉 `;
+          playerXPoint++;
+          box.forEach((box) => {
+            box.classList.add("disabled");
+          });
+        } else if (checkWinner(initialValue[turn]) === "tie") {
+          header.textContent = `It's a Tie Oops! 😐 `;
+          playerOPoint++;
+          box.forEach((box) => {
+            box.classList.add("disabled");
+          });
+        } else header.textContent = `Turn : O`;
+
+        console.log(checkWinner(initialValue[turn]));
+
+        box[i].classList.add("disabled");
+        turn = 0;
+      }
+    });
+  }
+
+  // Restart Button
+  reset.addEventListener("click", () => {
+    turn = 0;
+    for (let i = 0; i < box.length; i++) {
+      box[i].textContent = "";
+    }
+    box.forEach((box) => {
+      box.classList.remove("disabled");
+    });
+    header.textContent = `Turn : O`;
+  });
+  console.log(box);
   // End
 });
