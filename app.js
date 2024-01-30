@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const reset = document.querySelector(".reset");
 
+  // Make Array
   const box = [];
   for (let i = 0; i < fakeBox.length; i++) {
     box.push(fakeBox[i]);
@@ -119,8 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         } else header.textContent = `Turn : Player X`;
 
-        console.log(checkWinner(initialValue[turn]));
-
         box[i].classList.add("disabled");
         turn = 1;
 
@@ -143,8 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         } else header.textContent = `Turn : Player O`;
 
-        console.log(checkWinner(initialValue[turn]));
-
         box[i].classList.add("disabled");
         turn = 0;
       }
@@ -162,6 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     header.textContent = `Turn : Player O`;
   });
-  console.log(box);
+
   // End
 });
