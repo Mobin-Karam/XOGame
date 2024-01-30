@@ -112,12 +112,16 @@ document.addEventListener("DOMContentLoaded", () => {
           box.forEach((box) => {
             box.classList.add("disabled");
           });
+
+          // Check for Tie
         } else if (checkWinner(initialValue[turn]) === "tie") {
           header.textContent = `It's a Tie Oops! 😐 `;
           playerOPoint++;
           box.forEach((box) => {
             box.classList.add("disabled");
           });
+
+          // Default
         } else header.textContent = `Turn : Player X`;
 
         box[i].classList.add("disabled");
@@ -134,12 +138,16 @@ document.addEventListener("DOMContentLoaded", () => {
           box.forEach((box) => {
             box.classList.add("disabled");
           });
+
+          // Check for Tie
         } else if (checkWinner(initialValue[turn]) === "tie") {
           header.textContent = `It's a Tie Oops! 😐 `;
           playerOPoint++;
           box.forEach((box) => {
             box.classList.add("disabled");
           });
+
+          // Default
         } else header.textContent = `Turn : Player O`;
 
         box[i].classList.add("disabled");
